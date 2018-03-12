@@ -6,6 +6,6 @@ import {FileUploader} from 'ng2-file-upload';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'File Upload';
  public:FileUploader = new FileUploader({url:'localhost:8000/api/upload'});
 }
