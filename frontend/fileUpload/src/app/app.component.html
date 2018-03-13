@@ -6,10 +6,10 @@
     <div class = "navbar-header">
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
        <div style="text-align:center">
-  <h1>
+  <h1 class = "nav navbar-nav">
     Welcome to {{ title }}!
   </h1>
-  <img width="300"  src="/home/samuel/Documents/ionic/fileUpload_Angular2/frontend/fileUpload/src/app/images.png"/>
+  <!--<img width="300"  src=""/>-->
 </div>
       </div>
     </div>
@@ -20,17 +20,17 @@
     <div class="col-md-4">
       <form>
     <div class = "form-group">
-     <label for = "Single"> Upload a single file</label>
-     <input type="file" class = "form-control" name = "Single" ng2FileSelect [uploader] = "uploader" />
-  
+     <label for = "single"> Upload a single file</label>
+     <input type="file" class = "form-control" name = "single" ng2FileSelect [uploader] = "uploader" />
 </div>
  <div class = "form-group">
-     <label for = "Multiple"> Upload a Multiple files</label>
-     <input type="file" class = "form-control" name = "Single" ng2FileSelect [uploader] = "uploader" />
+     <label for = "multiple"> Upload Multiple files</label>
+     <input type="file" class = "form-control" name = "multiple" ng2FileSelect [uploader] = "uploader" multiple />
 </div>
       </form>
+    </div>
  <div class="col-md-8">
-  <h3>File Upload with Angular 2 and Node</h3>
+  <h3>File Upload to Node web server using angular2</h3>
   Queue length: {{ uploader?.queue?.length }}
 <table class="table">
 <thead>
@@ -44,7 +44,7 @@
 </thead>
 <tbody> 
   <tr *ngFor="let item of uploader.queue">
-    <td><strong>{{ item.file.name }}</strong></td>
+    <td><strong>{{ item?.file?.name }}</strong></td>
     <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
     <td>
       <div class="progress" style="margin-bottom: 0;">
@@ -84,8 +84,8 @@
             (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
         <span class="glyphicon glyphicon-upload"></span> Upload all
     </button>
-    <button type="button" class="btn btn-warning btn-s">
-            (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading
+    <button type="button" class="btn btn-warning btn-s"
+            (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
         <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
     </button>
     <button type="button" class="btn btn-danger btn-s"
@@ -96,7 +96,7 @@
  </div>
     </div>
   </div>
-</div>
+
 
     
 
