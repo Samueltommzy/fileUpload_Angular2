@@ -3,12 +3,15 @@ let multer = require('multer');
 let apiRoute = express.Router();
 let storage = multer.diskStorage({
     destination:function(req,file,cb){
-        cb(null,'../uploads')
+        cb(null,'./uploads')
     },
     filename: function(req,file,cb){
         cb(null,file.fieldname +'-'+ Date.now() + '.' + 
         file.originalname.split('.')[file.originalname.split('.').length -1]);
 
+    },
+    onFileUploadStart:function(file){
+console.log(file.originalname + ' is starting ...');
     }
 })
 let upload = multer({storage:storage}).single('file');
@@ -21,6 +24,7 @@ upload(req,res,function(err){
         })
         return;
     }
+    response.send("File uploaded")
 })
 })
 module.exports = apiRoute;
